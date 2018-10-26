@@ -17,9 +17,7 @@
    t))
 
 
-(add-to-list 'load-path "/Users/donchevl/.emacs.d/elpa/go-dlv-20160517.2046/") 
 (require 'go-dlv)
-
 
 (global-set-key (kbd "C-x g") 'magit-status)
 
@@ -28,7 +26,6 @@
 (global-set-key (kbd "C-x r") 'helm-browse-project)
 
 
-(add-to-list 'load-path "/Users/donchevl/.emacs.d/elpa/ace-jump-mode-20140616.815")
 (autoload
   'ace-jump-mode
   "ace-jump-mode"
@@ -36,7 +33,6 @@
   t)
 
 
-(add-to-list 'load-path "~/.emacs.d/elisp/helm-swoop")
 (require 'helm-swoop)
 (global-set-key (kbd "C-x M-i") 'helm-multi-swoop-all)
 
