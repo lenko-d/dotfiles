@@ -19,7 +19,7 @@
  '(custom-enabled-themes (quote (wheatgrass)))
  '(package-selected-packages
    (quote
-    (go-rename go-playground go-eldoc go-autocomplete helm-tramp helm-hunks shell-switcher exec-path-from-shell company-go company helm-swoop ace-jump-mode ace-isearch helm-ls-git helm groovy-mode dockerfile-mode docker salt-mode terraform-mode magit go-dlv go-mode)))
+    (go-snippets go-rename go-playground go-eldoc go-autocomplete helm-tramp helm-hunks shell-switcher exec-path-from-shell company-go company helm-swoop ace-jump-mode ace-isearch helm-ls-git helm groovy-mode dockerfile-mode docker salt-mode terraform-mode magit go-dlv go-mode)))
  '(recentf-max-saved-items 2000)
  '(recentf-mode t))
 (custom-set-faces
@@ -34,11 +34,17 @@
 
 (global-set-key (kbd "C-x g") 'magit-status)
 
+
 (global-set-key (kbd "M-x") 'helm-M-x)
 
+(global-set-key (kbd "C-x n") 'helm-recentf)
+(global-set-key (kbd "C-x b") 'helm-buffers-list)
+(global-set-key (kbd "M-y") 'helm-show-kill-ring)
+(global-set-key (kbd "C-h SPC") 'helm-all-mark-rings)
 (global-set-key (kbd "C-x r") 'helm-browse-project)
 (global-set-key (kbd "C-x e") 'helm-grep-do-git-grep)
 (global-set-key (kbd "C-x t") 'helm-ls-git-ls)
+(global-set-key (kbd "C-x c") 'compilation-mode)
 
 
 (autoload
@@ -68,7 +74,7 @@
   (exec-path-from-shell-initialize)
   (exec-path-from-shell-copy-env "GOPATH"))
 
-
+(global-set-key (kbd "C-x C-b") 'ibuffer)
 
 (require 'go-autocomplete)
 (require 'auto-complete-config)
@@ -78,3 +84,5 @@
 
 (require 'go-eldoc)
 (add-hook 'go-mode-hook 'go-eldoc-setup)
+
+
