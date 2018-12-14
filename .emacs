@@ -19,7 +19,7 @@
  '(custom-enabled-themes (quote (wheatgrass)))
  '(package-selected-packages
    (quote
-    (go-snippets go-rename go-playground go-eldoc go-autocomplete helm-tramp helm-hunks shell-switcher exec-path-from-shell company-go company helm-swoop ace-jump-mode ace-isearch helm-ls-git helm groovy-mode dockerfile-mode docker salt-mode terraform-mode magit go-dlv go-mode)))
+    (csharp-mode go-snippets go-rename go-playground go-eldoc go-autocomplete helm-tramp helm-hunks shell-switcher exec-path-from-shell company-go company helm-swoop ace-jump-mode ace-isearch helm-ls-git helm groovy-mode dockerfile-mode docker salt-mode terraform-mode magit go-dlv go-mode)))
  '(recentf-max-saved-items 2000)
  '(recentf-mode t))
 (custom-set-faces
@@ -86,3 +86,34 @@
 (add-hook 'go-mode-hook 'go-eldoc-setup)
 
 
+
+(autoload 'csharp-mode "csharp-mode" "Major mode for editing C# code." t)
+(setq auto-mode-alist
+      (append '(("\\.cs$" . csharp-mode)) auto-mode-alist))
+
+
+
+;; set key for agenda
+(global-set-key (kbd "C-c a") 'org-agenda)
+
+;;file to save todo items
+(setq org-agenda-files (quote ("/Users/donchevl/work/NOTES.org")))
+
+;;set priority range from A to C with default A
+(setq org-highest-priority ?A)
+(setq org-lowest-priority ?C)
+(setq org-default-priority ?A)
+
+;;set colours for priorities
+(setq org-priority-faces '((?A . (:foreground "#F0DFAF" :weight bold))
+                           (?B . (:foreground "LightSteelBlue"))
+                           (?C . (:foreground "OliveDrab"))))
+
+;;open agenda in current window
+(setq org-agenda-window-setup (quote current-window))
+
+;;capture todo items using C-c c t
+(define-key global-map (kbd "C-c c") 'org-capture)
+(setq org-capture-templates
+      '(("t" "todo" entry (file+headline "/Users/donchevl/work/NOTES.org" "Tasks")
+         "* TODO [#A] %?")))
