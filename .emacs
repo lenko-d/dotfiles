@@ -19,7 +19,7 @@
  '(custom-enabled-themes (quote (wheatgrass)))
  '(package-selected-packages
    (quote
-    (csharp-mode go-snippets go-rename go-playground go-eldoc go-autocomplete helm-tramp helm-hunks shell-switcher exec-path-from-shell company-go company helm-swoop ace-jump-mode ace-isearch helm-ls-git helm groovy-mode dockerfile-mode docker salt-mode terraform-mode magit go-dlv go-mode)))
+    (helm-etags-plus csharp-mode go-snippets go-rename go-playground go-eldoc go-autocomplete helm-tramp helm-hunks shell-switcher exec-path-from-shell company-go company helm-swoop ace-jump-mode ace-isearch helm-ls-git helm groovy-mode dockerfile-mode docker salt-mode terraform-mode magit go-dlv go-mode)))
  '(recentf-max-saved-items 2000)
  '(recentf-mode t))
 (custom-set-faces
@@ -92,6 +92,13 @@
       (append '(("\\.cs$" . csharp-mode)) auto-mode-alist))
 
 
+;; Display current line/column.
+(column-number-mode 1)
+(line-number-mode 1)
+
+;; Highlight matching ( [ { } ] ).
+(require 'paren)
+(show-paren-mode t)
 
 ;; set key for agenda
 (global-set-key (kbd "C-c a") 'org-agenda)
@@ -117,3 +124,20 @@
 (setq org-capture-templates
       '(("t" "todo" entry (file+headline "/Users/donchevl/work/NOTES.org" "Tasks")
          "* TODO [#A] %?")))
+
+
+
+(setq tags-table-list '("/Users/donchevl/work/webcms/riverside-insights-webcms"))
+ ;;     `M-.' default use symbol under point as tagname
+ ;;     `C-uM-.' use pattern you typed as tagname
+(global-set-key "\M-." 'helm-etags-plus-select)
+;;list all visited tags
+(global-set-key "\M-*" 'helm-etags-plus-history)
+;;go back directly
+(global-set-key "\M-[" 'helm-etags-plus-history-go-back)
+;;go forward directly
+(global-set-key "\M-]" 'helm-etags-plus-history-go-forward)
+
+
+
+
